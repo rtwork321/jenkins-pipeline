@@ -6,7 +6,7 @@ pipeline {
             steps {
                 echo 'Cloning repository...'
                 dir('C:/Users/Arina/Downloads/CICD/python-greetings') {
-                  //  git branch: 'main', url: 'https://github.com/mtararujs/python-greetings'
+                    git branch: 'main', url: 'https://github.com/mtararujs/python-greetings'
                 echo 'Checking repository contents...'
                 sh 'ls C:/Users/Arina/Downloads/CICD/python-greetings'
 
