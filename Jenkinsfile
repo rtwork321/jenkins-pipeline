@@ -11,7 +11,7 @@ pipeline {
                 sh 'ls C:/Users/Arina/Downloads/CICD/python-greetings'
 
                 echo 'Installing Python pip dependencies...'
-                sh 'pip install -r requirements.txt'
+                sh 'pip install -r C:/Users/Arina/Downloads/CICD/python-greetings/requirements.txt'
             }
         }
 
