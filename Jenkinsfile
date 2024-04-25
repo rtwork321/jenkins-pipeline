@@ -3,17 +3,20 @@ pipeline {
 
     stages {
         stage('install-pip-deps') {
-            steps {
-                echo 'Cloning repository...'
-                dir('C:/Users/Arina/Downloads/CICD/python-greetings') {
-                    git branch: 'main', url: 'https://github.com/mtararujs/python-greetings'
-                echo 'Checking repository contents...'
-                sh 'ls C:/Users/Arina/Downloads/CICD/python-greetings'
-
-                echo 'Installing Python pip dependencies...'
-                sh 'pip install -r C:/Users/Arina/Downloads/CICD/python-greetings/requirements.txt'
-            }
+    steps {
+        echo 'Cloning repository...'
+        dir('C:/Users/Arina/Downloads/CICD/python-greetings') {
+            git branch: 'main', url: 'https://github.com/mtararujs/python-greetings'
         }
+
+        echo 'Checking repository contents...'
+        sh 'ls C:/Users/Arina/Downloads/CICD/python-greetings'
+
+        echo 'Installing Python pip dependencies...'
+        sh 'pip install -r C:/Users/Arina/Downloads/CICD/python-greetings/requirements.txt'
+    }
+}
+
 
         stage('deploy-to-dev') {
             steps {
