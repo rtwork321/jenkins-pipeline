@@ -10,8 +10,8 @@ pipeline {
                 echo 'Checking repository contents...'
                 sh 'ls C:/Users/Arina/Downloads/CICD/python-greetings'
 
-               // echo 'Installing Python pip dependencies...'
-               // sh 'pip install -r requirements.txt'
+                echo 'Installing Python pip dependencies...'
+                sh 'pip install -r requirements.txt'
             }
         }
 
