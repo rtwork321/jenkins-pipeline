@@ -6,8 +6,8 @@ pipeline {
             steps {
                 echo 'Cloning repository...'
                 git 'https://github.com/rtwork321/python-greetings.git'
-                sh 'ls' 
-                sh 'pip3 install -r requirements.txt' // Installing dependencies
+                bat 'ls' 
+                bat 'pip3 install -r requirements.txt' // Installing dependencies
     }
 }
 
