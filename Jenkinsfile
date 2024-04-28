@@ -6,7 +6,7 @@ pipeline {
             steps {
                 echo 'Cloning repository...'
                 git branch: 'main', url: 'https://github.com/rtwork321/python-greetings.git'
-                bat 'dir' 
+                bat 'ls' 
                 bat 'pip3 install -r requirements.txt' // Installing dependencies
     }
 }
@@ -15,7 +15,7 @@ pipeline {
         stage('deploy-to-dev') {
             steps {
                 echo 'Deploying to Development...'
-                // sh 'git clone https://github.com/mtararujs/python-greetings'
+              //  git branch: 'main', url: 'https://github.com/rtwork321/python-greetings.git'
                 // sh 'cd python-greetings'
                 // sh 'pm2 delete greetings-app-dev || true'
                 // sh 'pm2 start app.py --name greetings-app-dev -- --port 7001'
