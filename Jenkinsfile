@@ -5,9 +5,9 @@ pipeline {
         stage('install-pip-deps') {
             steps {
                 echo 'Cloning repository...'
-               // git 'https://github.com/rtwork321/python-greetings.git'
-                sh 'ls' 
-               // bat 'pip3 install -r requirements.txt' // Installing dependencies
+                git clone 'https://github.com/rtwork321/python-greetings.git'
+                bat 'ls' 
+                bat 'pip3 install -r requirements.txt' // Installing dependencies
     }
 }
 
