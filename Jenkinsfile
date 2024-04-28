@@ -18,10 +18,6 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/rtwork321/python-greetings.git'
                 bat 'pm2 delete greetings-app-dev && EXIT /B 0 || EXIT /B 0'
                 script {
-                    // Delete existing service gracefully
-                    bat 'pm2 delete greetings-app-dev & set errorlevel=0'
-                    
-                    // Start the Flask app using pm2
                     bat 'pm2 start app.py --name greetings-app-dev -- --port 7001'
                     
                     // Wait for the application to start (you may adjust the duration)
