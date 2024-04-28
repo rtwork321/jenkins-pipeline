@@ -5,15 +5,9 @@ pipeline {
         stage('install-pip-deps') {
     steps {
         echo 'Cloning repository...'
-        dir('C:/Users/Arina/Downloads/CICD/python-greetings') {
-            git branch: 'main', url: 'https://github.com/mtararujs/python-greetings'
-        }
-
-        echo 'Checking repository contents...'
-        sh 'ls C:/Users/Arina/Downloads/CICD/python-greetings'
-
-        echo 'Installing Python pip dependencies...'
-        sh 'pip install -r C:/Users/Arina/Downloads/CICD/python-greetings/requirements.txt'
+        git 'https://github.com/rtwork321/python-greetings.git'
+        sh 'ls' 
+        sh 'pip3 install -r requirements.txt' // Installing dependencies
     }
 }
 
