@@ -3,11 +3,11 @@ pipeline {
 
     stages {
         stage('install-pip-deps') {
-    steps {
-        echo 'Cloning repository...'
-        git 'https://github.com/rtwork321/python-greetings.git'
-        sh 'ls' 
-        sh 'pip3 install -r requirements.txt' // Installing dependencies
+            steps {
+                echo 'Cloning repository...'
+                git 'https://github.com/rtwork321/python-greetings.git'
+                sh 'ls' 
+                sh 'pip3 install -r requirements.txt' // Installing dependencies
     }
 }
 
