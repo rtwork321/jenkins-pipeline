@@ -20,7 +20,7 @@ pipeline {
                 bat 'pm2 start app.py --name greetings-app-dev -- --port 7001'
                 bat 'ping 127.0.0.1 -n 6 > nul'
                 bat 'netstat -ano | findstr :7001'
-                
+                bat 'pm2 logs greetings-app-dev'
             }
         }
 
