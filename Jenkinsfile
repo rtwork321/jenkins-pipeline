@@ -14,11 +14,11 @@ pipeline {
             steps {
                 echo 'Deploying to Development...'
                 git branch: 'main', url: 'https://github.com/rtwork321/python-greetings.git'
-                bat 'pm2 delete greetings-app-dev && EXIT /B 0 || EXIT /B 0'
+                bat 'pm2 delete greetings-app-dev || true'
                 //bat 'pm2 start app.py --name greetings-app-dev -- --port 7001'
                 script {
-                    bat 'set PORT=7001 && start python app.py'
-                    bat 'ping 127.0.0.1 -n 6 > nul'
+                    bat 'python app.py &'
+                    bat 'timeout /t 5 /nobreak > NUL'
                     bat 'netstat -ano | findstr :7001'
                 }            
             }
