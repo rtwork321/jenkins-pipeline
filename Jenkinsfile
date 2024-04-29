@@ -14,9 +14,10 @@ pipeline {
             steps {
                 echo 'Deploying to Development...'
                 git branch: 'main', url: 'https://github.com/rtwork321/python-greetings.git'
-                bat 'pm2 delete greetings-app-dev & exit /b 0'
+                //bat 'pm2 delete greetings-app-dev & exit /b 0'
                 //bat 'pm2 start app.py --name greetings-app-dev -- --port 7001'  
-                bat 'python app.py --port 7001'
+                bat 'pm2 delete greetings-app-dev || true' // Delete
+                bat 'pm2 start app.py --name greetings-app-dev --interpreter python -- --port 7001' 
                   
                 
             }
@@ -26,7 +27,7 @@ pipeline {
             steps {
                 echo 'Running tests on Development...'
                 git branch: 'main', url: 'https://github.com/rtwork321/course-js-api-framework.git'
-                // bat 'npm install'
+                bat 'npm install'
                 // bat 'npm run greetings greetings_dev'
             }
         }
