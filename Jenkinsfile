@@ -19,8 +19,8 @@ pipeline {
                 script {
                     bat 'set PORT=7001'
                     bat 'start python app.py'
-                    bat 'ping 127.0.0.1 -n 6 > nul'
-                    bat 'netstat -ano | findstr :7001'
+                    //bat 'ping 127.0.0.1 -n 6 > nul'
+                    //bat 'netstat -ano | findstr :7001'
                 }            
             }
         }
