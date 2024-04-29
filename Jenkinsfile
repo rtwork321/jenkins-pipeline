@@ -28,9 +28,9 @@ pipeline {
         stage('tests-on-dev') {
             steps {
                 echo 'Running tests on Development...'
-                // git branch: 'main', url: 'https://github.com/rtwork321/course-js-api-framework.git'
-                // bat 'npm install'
-                // bat 'npm run greetings greetings_dev'
+                git branch: 'main', url: 'https://github.com/rtwork321/course-js-api-framework.git'
+                bat 'npm install'
+                bat 'npm run greetings greetings_dev'
                 // bat 'npm run greetings_dev'????
             }
         }
