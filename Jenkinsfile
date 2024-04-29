@@ -22,13 +22,10 @@ pipeline {
         stage('tests-on-dev') {
             steps {
                 echo 'Running tests on Development...'
+                bat 'python -m http.server 7002 > mock_server.log 2>&1 &'
                 git branch: 'main', url: 'https://github.com/rtwork321/course-js-api-framework.git'
-                script {
-                    docker.image('node:14').inside() {
-                        bat 'npm install'
-                        bat 'npm run greetings greetings_dev'
-                    }
-                }
+                bat 'npm install'
+                //bat 'npm run greetings greetings_dev'
             }
         }
 
