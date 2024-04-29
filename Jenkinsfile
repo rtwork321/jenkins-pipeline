@@ -7,7 +7,7 @@ pipeline {
                 echo 'Cloning repository...'
                 git branch: 'main', url: 'https://github.com/rtwork321/python-greetings.git'
                 bat 'dir' 
-                bat 'pip3 install -r requirements.txt' // Installing dependencies
+                bat 'pip3 install -r requirements.txt'
     }
 }
         stage('deploy-to-dev') {
@@ -23,8 +23,12 @@ pipeline {
             steps {
                 echo 'Running tests on Development...'
                 git branch: 'main', url: 'https://github.com/rtwork321/course-js-api-framework.git'
-                bat 'npm install'
-                //bat 'npm run greetings greetings_dev'
+                script {
+                    docker.image('node:14').inside() {
+                        bat 'npm install'
+                        bat 'npm run greetings greetings_dev'
+                    }
+                }
             }
         }
 
