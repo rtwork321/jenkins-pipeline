@@ -15,12 +15,9 @@ pipeline {
                 echo 'Deploying to Development...'
                 git branch: 'main', url: 'https://github.com/rtwork321/python-greetings.git'
                 bat 'pm2 delete greetings-app-dev & exit /b 0'
-                    script {
-                //bat 'pm2 start app.py --name greetings-app-dev -- --port 49664'  //49664; 7001
-                        env.PORT = '49664'
-                        echo "PORT environment variable is set to: ${env.PORT}"
-                        bat 'pm2 start app.py --name greetings-app-dev --interpreter python -- --port $PORT' 
-                    }
+                
+                bat 'pm2 start app.py --name greetings-app-dev --watch --interpreter python -f --env PORT=7001'  //49664; 7001
+                 
                 
             }
         }
