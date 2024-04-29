@@ -15,12 +15,7 @@ pipeline {
                 echo 'Deploying to Development...'
                 git branch: 'main', url: 'https://github.com/rtwork321/python-greetings.git'
                 bat 'pm2 delete greetings-app-dev || true'
-                //bat 'pm2 start app.py --name greetings-app-dev -- --port 7001'
-                script {
-                    bat 'python app.py &'
-                    bat 'timeout /t 5 /nobreak > NUL'
-                    bat 'netstat -ano | findstr :7001'
-                }            
+                //bat 'pm2 start app.py --name greetings-app-dev -- --port 7001'          
             }
         }
 
