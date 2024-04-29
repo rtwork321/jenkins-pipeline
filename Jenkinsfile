@@ -16,7 +16,13 @@ pipeline {
             steps {
                 echo 'Deploying to Development...'
                 git branch: 'main', url: 'https://github.com/rtwork321/python-greetings.git'
-                bat 'pm2 delete greetings-app-dev & exit /b 0'
+                script {
+                    try {
+                bat 'pm2 delete greetings-app-dev'
+                } catch (Exception e) {
+                // If the delete command fails, catch the exception and continue
+                echo "Failed to delete the PM2 process: ${e.message}"
+                }
                 bat 'pm2 start app.py --name greetings-app-dev -- --port 7001'
             }
         }
