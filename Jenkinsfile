@@ -15,21 +15,19 @@ pipeline {
                 echo 'Deploying to Development...'
                 git branch: 'main', url: 'https://github.com/rtwork321/python-greetings.git'
                 bat 'pm2 delete greetings-app-dev & exit /b 0'
-                //bat 'pm2 start app.py --name greetings-app-dev -- --port 7001'  
-                bat 'start "Flask Server" /B python app.py --port 7001 > server.log 2>&1'
-                
-                bat 'timeout /T 30 /nobreak >NUL'        
+                //bat 'pm2 start app.py --name greetings-app-dev -- --port 7001'          
+                bat 'pm2 start app.py --name greetings-app-dev --interpreter python -- --port 7001'
+                bat 'timeout /t 10 > nul'
             }
         }
 
         stage('tests-on-dev') {
             steps {
                 echo 'Running tests on Development...'
-                bat 'start "Mock Server" /B python -m http.server 7002 > mock_server.log 2>&1'
                 git branch: 'main', url: 'https://github.com/rtwork321/course-js-api-framework.git'
-                bat 'timeout /T 10 /nobreak >NUL'
                 bat 'npm install'
-                bat 'npm run greetings greetings_dev'
+                //bat 'npm run greetings greetings_dev'
+                bat 'npm run greetings_dev'
             }
         }
 
